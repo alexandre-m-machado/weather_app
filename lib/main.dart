@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/services.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +12,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final _cityTextController = TextEditingController();
+  final _Service = Services();
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class _MyAppState extends State<MyApp> {
             padding: EdgeInsets.only(top: 25),
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: _search,
             style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.all(15.0),
                 fixedSize: Size(150, 50),
@@ -49,5 +51,9 @@ class _MyAppState extends State<MyApp> {
         ],
       )),
     ));
+  }
+
+  void _search() {
+    _Service.getWeather(_cityTextController.text);
   }
 }

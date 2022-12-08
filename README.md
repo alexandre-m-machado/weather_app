@@ -20,3 +20,6 @@ Timeline :
         - Text Edit Controller
         - Text field
         - Button
+        - Get weather app API
+        - Create getWeather function
+        - Connect to API
