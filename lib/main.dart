@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final _cityTextController = TextEditingController();
+  final _city = TextEditingController();
   final _Service = Services();
 
   @override
@@ -23,13 +23,13 @@ class _MyAppState extends State<MyApp> {
         mainAxisAlignment: MainAxisAlignment.center,
         // ignore: prefer_const_literals_to_create_immutables
         children: [
-          const Padding(
-              padding: EdgeInsets.symmetric(vertical: 50),
+          Padding(
+              padding: const EdgeInsets.symmetric(vertical: 50),
               child: SizedBox(
                   width: 150,
                   child: TextField(
-                    controller: null,
-                    decoration: InputDecoration(labelText: 'City'),
+                    controller: _city,
+                    decoration: const InputDecoration(labelText: 'City'),
                     textAlign: TextAlign.center,
                   ))),
           const Padding(
@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
             onPressed: _search,
             style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.all(15.0),
-                fixedSize: Size(150, 50),
+                fixedSize: const Size(150, 50),
                 foregroundColor: Colors.black,
                 backgroundColor: Colors.lightBlue,
                 elevation: 15,
@@ -54,6 +54,6 @@ class _MyAppState extends State<MyApp> {
   }
 
   void _search() {
-    _Service.getWeather(_cityTextController.text);
+    _Service.getWeather(_city.text);
   }
 }
