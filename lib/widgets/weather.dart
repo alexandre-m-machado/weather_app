@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/services.dart';
+import 'package:weather_app/data/services.dart';
+import 'package:weather_app/models/weather_model.dart';
 
-class WeatherWidget extends StatelessWidget {
+class WeatherWidget extends StatefulWidget {
+  const WeatherWidget({super.key});
+
+  @override
+  State<WeatherWidget> createState() => _WeatherWidgetState();
+}
+
+class _WeatherWidgetState extends State<WeatherWidget> {
   final _city = TextEditingController();
-  final service = Services();
 
-  WeatherWidget({super.key});
+  final _service = Services();
 
-  void _search() {
-    service.getWeather(_city.text);
+  WeatherGet? _response;
+
+  void _search() async {
+    final response = await _service.getWeather(_city.text);
+    setState(() => _response = response);
   }
 
   @override
@@ -19,6 +29,16 @@ class WeatherWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         // ignore: prefer_const_literals_to_create_immutables
         children: [
+          if (_response != null)
+            Column(
+              children: [
+                Text(
+                  '${_response!.tempInfo.temperature}°',
+                  style: const TextStyle(fontSize: 60),
+                ),
+                Text(_response!.weatherInfo.weatherDisc)
+              ],
+            ),
           Padding(
               padding: const EdgeInsets.symmetric(vertical: 50),
               child: SizedBox(
