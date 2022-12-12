@@ -50,8 +50,6 @@
 
 */
 
-import 'package:flutter/cupertino.dart';
-
 class Weather {
   final String weatherDisc;
   final String icon;
@@ -67,12 +65,21 @@ class Weather {
 
 class Temperature {
   final double temperature;
+  final double tempMin;
+  final double tempMax;
 
-  Temperature({required this.temperature});
+  Temperature({
+    required this.temperature,
+    required this.tempMin,
+    required this.tempMax,
+  });
 
   factory Temperature.fromJson(Map<String, dynamic> json) {
     final temperature = json['temp'];
-    return Temperature(temperature: temperature);
+    final tempMin = json['temp_min'];
+    final tempMax = json['temp_max'];
+    return Temperature(
+        temperature: temperature, tempMin: tempMin, tempMax: tempMax);
   }
 }
 
@@ -80,6 +87,10 @@ class WeatherGet {
   final String city;
   final Temperature tempInfo;
   final Weather weatherInfo;
+
+  String get iconUrl {
+    return 'https://openweathermap.org/img/wn/${weatherInfo.icon}@2x.png';
+  }
 
   WeatherGet({
     required this.city,
