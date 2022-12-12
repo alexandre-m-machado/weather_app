@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/data/services.dart';
 import 'package:weather_app/models/weather_model.dart';
+import 'package:weather_app/widgets/navegator.dart';
 
 class WeatherWidget extends StatefulWidget {
   const WeatherWidget({super.key});
@@ -27,25 +28,27 @@ class _WeatherWidgetState extends State<WeatherWidget> {
       backgroundColor: const Color.fromARGB(255, 191, 214, 222),
       body: Center(
           child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         // ignore: prefer_const_literals_to_create_immutables
         children: [
+          const SizedBox(height: 20),
+          const Align(
+            alignment: AlignmentDirectional.topEnd,
+            child: Navegator(),
+          ),
           if (_response != null)
             Column(
               children: [
-                const SizedBox(height: 15),
                 Text(
-                  '${_response!.city}°',
+                  '${_response!.city}',
                   style: const TextStyle(fontSize: 40),
                 ),
                 Image.network(_response!.iconUrl),
                 Text(_response!.weatherInfo.weatherDisc),
-                const SizedBox(height: 20),
                 Text(
                   '${_response!.tempInfo.temperature}°',
                   style: const TextStyle(fontSize: 60),
                 ),
-                const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -60,7 +63,7 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                       style: TextStyle(
                           fontSize: 15, color: Color.fromARGB(223, 94, 86, 86)),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 50,
                     ),
                     Text(
