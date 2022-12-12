@@ -3,8 +3,8 @@ import 'package:http/http.dart' as http;
 class Services {
   void getWeather(String city) async {
     final queryParameter = {
-      'k': city,
-      'AppId': 'd73c4050be283cea7ff555ebafcb5fe9'
+      'q': city,
+      'appid': 'd73c4050be283cea7ff555ebafcb5fe9'
     };
 
     final uri = Uri.https(
