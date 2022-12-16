@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:weather_app/widgets/weather.dart';
 
 const List<String> list = <String>[
   'Stockholm',
@@ -23,6 +25,8 @@ class _NavegatorState extends State<Navegator> {
       icon: const Icon(Icons.list),
       onChanged: (String? value) {
         setState(() => dropDown = value!);
+        String page = value.toString();
+        Navigator.pushNamed(context, page);
       },
       items: list.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(

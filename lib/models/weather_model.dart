@@ -65,8 +65,8 @@ class Weather {
 
 class Temperature {
   final double temperature;
-  final double tempMin;
-  final double tempMax;
+  final num tempMin;
+  final num tempMax;
 
   Temperature({
     required this.temperature,
