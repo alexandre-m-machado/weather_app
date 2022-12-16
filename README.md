@@ -21,3 +21,5 @@ Tomei a decisão de implementar um sistema de search em conjunto com o requisita
 Por fim, a ultima dificuldade que encontrei foi conseguir passar a página predefinidas sem utilizar um botão para mostrar a página.
 
 Aprendi bastante com esta aplicação e vou continuar a tentar melhorar após submissão.
+
+PS: A app tinha alguma lentidão a correr no meu computador, não sei de que era e mesmo após perguntar em foruns ou ao meu professor fui incapaz de resolver o problema.
