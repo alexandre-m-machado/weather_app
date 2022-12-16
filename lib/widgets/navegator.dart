@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:weather_app/widgets/weather.dart';
 
 const List<String> list = <String>[
   'Stockholm',
